@@ -71,6 +71,25 @@ const pAequorFactory = (num, array) => {
         default:
           console.log('That letter is not one of the provided options');
       }
+    },
+    compareDNA(pAequor) {
+      console.log(`Sample 1: \n ${this.specimenNum} \n ${this.dna}`);
+      console.log(`Sample 2: \n ${pAequor.specimenNum} \n ${pAequor.dna}`)
+      const testSubject1 = this.dna;
+      const testSubject2 = pAequor.dna;
+      const matchedLetters = []
+      for (let i=0; i< testSubject1.length; i++) {
+          if(testSubject1[i] === testSubject2[i]) {
+            
+            matchedLetters.push(testSubject1[i]);
+          };
+      };
+      console.log(matchedLetters.length)
+      let amountMatching = matchedLetters.length
+      let outOf = amountMatching / 15;
+      let result = outOf * 100;
+      console.log(`${Math.floor(result)}% match between subjects!`);
+      return Math.floor(result);
     }
   };
 };
@@ -84,6 +103,14 @@ let test2 = pAequorFactory(1, mockUpStrand())
 console.log(`Original: \n ${JSON.stringify(test2)}`)
 test2.mutate();
 console.log(`Mutated: \n ${JSON.stringify(test2)}`)
+
+//Test Function 3:
+let test3 = pAequorFactory(1, mockUpStrand());
+let test4 = pAequorFactory(2, mockUpStrand());
+console.log(JSON.stringify(test3))
+console.log(JSON.stringify(test4))
+test3.compareDNA(test4);
+
 
 
 
